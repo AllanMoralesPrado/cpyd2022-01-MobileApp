@@ -1,2 +1,11 @@
-# cpyd2022-01-MobileApp
-Proyecto Aplicación Móvil de Cmputación Paralela y Distribuida
+# Proyecto de Aplicación Móvil
+Computación Paralela y Distribuida 2022-01
+
+## Descripción
+
+## Requerimientos
+
+## Instrucciones
+
+## Desarrolladores
+- Allan Morales Prado
