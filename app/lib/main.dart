@@ -50,6 +50,10 @@ class _NavigationExampleState extends State<NavigationExample> {
               leading: Icon(Icons.logout),
               title: Text('Cerrar Sesión'),
             ),
+            ListTile(
+              leading: Icon(Icons.question_mark),
+              title: Text('Acerca de'),
+            ),
           ],
         ),
       ),
@@ -75,27 +79,56 @@ class _NavigationExampleState extends State<NavigationExample> {
         Container(
           color: Colors.white,
           alignment: Alignment.center,
-          child: OutlinedButton.icon(
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all<OutlinedBorder>(const StadiumBorder()),
-              side: MaterialStateProperty.resolveWith<BorderSide>(
-                (Set<MaterialState> states) {
-                  final Color color = states.contains(MaterialState.pressed)
-                    ? Colors.blue
-                    : Colors.red;
-                  return BorderSide(color: color, width: 2);
-                }
-              ),
-            ),
-            onPressed: () { },
-            label: const Text('Marcar Entrada'),
-            icon: const Icon(Icons.input),
-          ),
+          child: 
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OutlinedButton.icon(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(50))
+                  ),
+                  onPressed: null,
+                  icon: const Icon(Icons.input), 
+                  label: const Text('Marcar Entrada')
+                ),
+                OutlinedButton.icon(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(50))
+                  ),
+                  onPressed: null,
+                  icon: const Icon(Icons.output),
+                  label: const Text('Marcar Salida')
+                ),
+              ],
+            )
         ),
         Container(
-          color: Colors.green,
+          color: Colors.white,
           alignment: Alignment.center,
-          child: const Text('Historial de asistencias'),
+          child: 
+            ListView(
+              padding: const EdgeInsets.all(20.0),
+              addAutomaticKeepAlives: false,
+              cacheExtent: 100.0,
+              children: const [
+                Card(
+                  margin: EdgeInsets.all(10.0),
+                  child: 
+                    Text(
+                      'carta 1',
+                      textAlign: TextAlign.center,
+                    ),
+                ),
+                Card(
+                  margin: EdgeInsets.all(10.0),
+                  child: 
+                    Text(
+                      'carta 1',
+                      textAlign: TextAlign.center,
+                    ),
+                ),
+              ],
+            )
         ),
       ][currentPageIndex],
     );
