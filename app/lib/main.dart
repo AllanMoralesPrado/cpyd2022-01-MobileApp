@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:http/http.dart' as http;
-import 'parse_json.dart';
+//import 'classrooms.dart';
+//import 'services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,15 @@ class NavigationExample extends StatefulWidget {
 
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
+  /*
+  late Future<Classrooms> futureClassrooms;
 
+  @override
+  void initState() {
+    super.initState();
+    futureClassrooms = fetchClassrooms();
+  }
+  */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,49 +124,25 @@ class _NavigationExampleState extends State<NavigationExample> {
               ],
             )),
         Container(
-          color: Colors.white,
-          alignment: Alignment.center,
-          child: FutureBuilder<List<Welcome>>(
-            future: fetchWelcome(http.Client()),
+            color: Colors.white,
+            alignment: Alignment.center,
+            child: const Text(
+                'EXCEPCION EN services.dart, linea 13. Descripcion en lineas 21 - 23')
+            /*FutureBuilder<Classrooms>(
+            future: futureClassrooms,
             builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return const Center(
-                  child: Text('Ha ocurrido un error!'),
-                );
-              } else if (snapshot.hasData) {
-                return WelcomeList(welcome: snapshot.data!);
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+              if (snapshot.hasData) {
+                return Text(snapshot.data!.classroom);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
               }
+
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
             },
-          ),
-        )
+          ),*/
+            )
       ][currentPageIndex],
-    );
-  }
-}
-
-// Widget del JSON
-class WelcomeList extends StatelessWidget {
-  const WelcomeList({super.key, required this.welcome});
-
-  final List<Welcome> welcome;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: welcome.length,
-      itemBuilder: (context, index) {
-        return const Card(
-          child: SizedBox(
-            width: 300,
-            height: 100,
-            child: Center(child: Text('Elevated Card')),
-          ),
-        );
-      },
     );
   }
 }
