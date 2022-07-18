@@ -65,10 +65,6 @@ class _NavigationExampleState extends State<NavigationExample> {
               leading: Icon(Icons.logout),
               title: Text('Cerrar Sesión'),
             ),
-            ListTile(
-              leading: Icon(Icons.question_mark),
-              title: Text('Acerca de'),
-            ),
           ],
         ),
       ),
@@ -87,6 +83,10 @@ class _NavigationExampleState extends State<NavigationExample> {
           NavigationDestination(
             icon: Icon(Icons.history),
             label: 'Historial',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.people),
+            label: 'Integrantes',
           ),
         ],
       ),
@@ -128,6 +128,24 @@ class _NavigationExampleState extends State<NavigationExample> {
             alignment: Alignment.center,
             child: const Text(
                 'EXCEPCION EN services.dart, linea 13. Descripcion en lineas 21 - 23')
+            /*FutureBuilder<Classrooms>(
+            future: futureClassrooms,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data!.classroom);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
+          ),*/
+            ),
+        Container(
+            color: Colors.white,
+            alignment: Alignment.center,
+            child: const Text('Integrantes\n- Allan Morales Prado')
             /*FutureBuilder<Classrooms>(
             future: futureClassrooms,
             builder: (context, snapshot) {
